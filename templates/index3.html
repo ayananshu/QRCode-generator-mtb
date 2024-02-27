@@ -31,6 +31,14 @@
         button {
             margin-top: 20px; /* Add space between image and button */
         }
+        .footer-text {
+            position: absolute;
+            bottom: 0;
+            center: 0;
+            margin: 10px;
+            font-size: small;
+            color: #000; /* Adjust the color as needed */
+        }
     </style>
 </head>
 <body>
@@ -45,7 +53,7 @@
             <a href="{{ qrCodeImageUrl }}" download="qrcode.png"><button style="padding: 10px; background-color: #28a745; color: white; border: none; border-radius: 5px;">Download QR Code</button></a>
         {% endif %}
     </div>
-
+    <div class="footer-text">Ayan@M&T</div>
     <script>
         const images = {{ images | tojson }};
         let index = 0;
