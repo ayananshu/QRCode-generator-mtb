@@ -28,7 +28,8 @@
 <li><span class="">Access the application in your browser at </span><span class=""><code>http://localhost:5000</code></span></li>
 </ol>
 <h3>Screenshots</h3>
-<span class="">Screenshot 1</span><span class=""><br></span><span class="">
+<span class="">Screenshot 1</span><span class=""><img width="897" alt="image" src="https://github.com/ayananshu/QRCode-generator-mtb/assets/30047668/519d7709-ea7b-4c07-baa9-cde526f3be42">
+<br></span><span class="">
 </span><span class="">Screenshot 2</span>
 <h3>Credits</h3>
 <ul class="list-outside list-disc pl-8">
