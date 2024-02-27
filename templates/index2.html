@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>QR Code Generator</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('static/images/logo6.png'); /* Set background image */
+            background-size: cover;
+            background-position: center;
+        }
+        .container {
+            text-align: center;
+        }
+        img {
+            display: block;
+            margin: 0 auto; /* Center the image horizontally */
+            margin-bottom: 20px; /* Add space below the image */
+        }
+        button {
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        {% if img_data %}
+            <img src="data:image/png;base64,{{ img_data }}" alt="QR Code">
+            <button onclick="downloadImage()">Download QR Code</button>
+
+            <button onclick="goBack()" style="margin-top: 20px;">Back</button>
+        {% endif %}
+    </div>
+
+    <script>
+        function downloadImage() {
+            var element = document.createElement('a');
+            element.setAttribute('href', 'data:image/png;base64,{{ img_data }}');
+            element.setAttribute('download', 'qrcode.png');
+
+            element.style.display = 'none';
+            document.body.appendChild(element);
+
+            element.click();
+
+            document.body.removeChild(element);
+        }
+
+        function goBack() {
+          window.history.back();
+        }
+    </script>
+</body>
+</html>

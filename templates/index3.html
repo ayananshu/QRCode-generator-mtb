@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>QR Code Generator</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            background-image: url("{{ url_for('static', filename='images/background.jpg') }}"); /* Set background image */
+            background-size: cover;
+            background-position: center;
+            transition: background-image 2s ease-in-out;
+        }
+        .container {
+            text-align: center;
+            max-width: 400px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        img {
+            display: block;
+            margin: 0 auto; /* Center the image horizontally */
+        }
+        button {
+            margin-top: 20px; /* Add space between image and button */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>QR Code Generator</h1>
+        <form action="/" method="post">
+            <input type="text" name="url" placeholder="Enter URL" style="width: 100%; margin-bottom: 10px;">
+            <button type="submit" style="width: 100%; padding: 10px; background-color: #007bff; color: white; border: none; border-radius: 5px;">Generate QR Code</button>
+        </form>
+        {% if qrCodeImageUrl %}
+            <img src="{{ qrCodeImageUrl }}" alt="QR Code">
+            <a href="{{ qrCodeImageUrl }}" download="qrcode.png"><button style="padding: 10px; background-color: #28a745; color: white; border: none; border-radius: 5px;">Download QR Code</button></a>
+        {% endif %}
+    </div>
+
+    <script>
+        const images = {{ images | tojson }};
+        let index = 0;
+
+        function rotateBackground() {
+          index = (index + 1) % images.length;
+          document.body.style.backgroundImage = `url("{{ url_for('static', filename='images/') }}${images[index]}")`;
+          setTimeout(rotateBackground, 30000); // Rotate every 5 seconds
+        }
+
+        rotateBackground();
+    </script>
+</body>
+</html>
